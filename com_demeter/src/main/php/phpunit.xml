@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+   bootstrap="bootstrap.php"
+   stderr="true"
+   backupGlobals="false"
+     backupStaticAttributes="false"
+     colors="true"
+     convertErrorsToExceptions="true"
+     convertNoticesToExceptions="true"
+     convertWarningsToExceptions="true"
+     processIsolation="false"
+     stopOnFailure="false">>
+    <testsuites>
+        <testsuite name="Mamaezona">
+            <directory suffix=".php">com_mamaezona</directory>
+            <directory suffix=".php">mod_sugestoes_dicas</directory>
+            <directory suffix=".php">mod_marcadores_aleatorios</directory>
+            <directory suffix=".php">plg_momomamaezona</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-clover" target="../../build/tests-clover.xml"/>
+        <log type="junit" target="../../build/tests-junit.xml"
+             logIncompleteSkipped="false"/>
+    </logging>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../components/com_momoseo</directory>
+            <directory suffix=".php">../modules/mod_sugestoes_dicas</directory>
+            <directory suffix=".php">../modules/mod_marcadores_aleatorios</directory>
+            <directory suffix=".php">../plugins/plg_momoseo</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+    </php>
+</phpunit>

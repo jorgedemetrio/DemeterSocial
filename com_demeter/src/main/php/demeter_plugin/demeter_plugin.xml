@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system">
+	<name>Plugin Demeter</name>
+	<author>Jorge Demetrio</author>
+	<creationDate>Outrubro 2017</creationDate>
+
+	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
+	<authorEmail>jorge.demetrio@alldreams.com.br</authorEmail>
+	<authorUrl>www.alldreams.com.br</authorUrl>
+	<version>{VERSAO}</version>
+	<description>PLG_SEARCH_CATEGORIES_XML_DESCRIPTION</description>
+	<files>
+<!-- 		<filename plugin="categories">categories.php</filename> -->
+		<filename>index.html</filename>
+		<filename plugin="demeter_plugin">demeter_plugin.php</filename>
+	</files>
+
+	<config>
+		<fields name="params">
+
+			<fieldset name="basic">
+				<field name="metatags" type="textarea"
+					default="50"
+					description="Metatags Google WEBMASTER & BING"
+					label="Metatags Google WEBMASTER & BING"
+				/>
+				<field name="analytics" type="textarea"
+					default="50"
+					description="Script do Analytics"
+					label="Script do Analytics"
+					size="5"
+				/>
+
+			</fieldset>
+
+		</fields>
+	</config>
+</extension>
