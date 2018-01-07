@@ -12,7 +12,7 @@ class plgSystemDemeter_plugin extends JPlugin
 	{
 		$metatags = $this->params['metatags'];
 		$analytics = $this->params['analytics'];
-		
+		$document = JFactory::getDocument();
 		
 		$document->addCustomTag($metatags );
 		$document->addCustomTag($analytics);
