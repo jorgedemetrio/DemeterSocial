@@ -8,7 +8,7 @@
 	<authorEmail>jorge.demetrio@alldreams.com.br</authorEmail>
 	<authorUrl>www.alldreams.com.br</authorUrl>
 	<version>{VERSAO}</version>
-	<description>PLG_SEARCH_CATEGORIES_XML_DESCRIPTION</description>
+	<description>Social Media a suas páginas</description>
 	<files>
 <!-- 		<filename plugin="categories">categories.php</filename> -->
 		<filename>index.html</filename>
