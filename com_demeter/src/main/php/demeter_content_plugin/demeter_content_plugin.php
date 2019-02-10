@@ -15,8 +15,8 @@ class plgContentDemeter_content_plugin extends JPlugin
 	function onContentAfterTitle($context, &$article, &$params, $limitstart)
 	{
 
-		if($context!='com_content.article'){
-			return;
+	    if($context!='com_content.article'  || !isset($article)){
+			return '';
 		}
 		
 		
@@ -74,10 +74,10 @@ class plgContentDemeter_content_plugin extends JPlugin
 	Tweet</a><g:plusone></g:plusone><div class="g-plus" data-action="share"></div>';
 	}
 	
-	function onContentAfterDisplay($context, &$article, &$params, $limitstart)
+	function onContentAfterDisplay($context, &$article, &$params, $limitstart=0)
 	{
-		if($context!='com_content.article'){
-			return;
+	    if($context!='com_content.article' || !isset($article)){
+			return '';
 		}
 		$tamanho = $this->params['tamanho'];
 
