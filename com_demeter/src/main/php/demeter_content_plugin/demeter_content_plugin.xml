@@ -8,7 +8,7 @@
 	<authorEmail>jorge.demetrio@alldreams.com.br</authorEmail>
 	<authorUrl>www.alldreams.com.br</authorUrl>
 	<version>{VERSAO}</version>
-	<description>Social Media a suas páginas</description>
+	<description>PLG_SEARCH_CATEGORIES_XML_DESCRIPTION</description>
 	<files>
 <!-- 		<filename plugin="categories">categories.php</filename> -->
 		<filename>index.html</filename>
@@ -23,20 +23,27 @@
 
 			<fieldset name="basic">
 				<field name="tamanho" type="text"
+					default="50"
 					description="Tamanhoda página"
 					label="Tamanho página"
 					size="5"
 				/>
 				<field name="token_facebook" type="text"
-					description="Token do Facebook"
-					label="Token do Facebook"
+					default="50"
+					description="Atributo nonce"
+					label="Atributo nonce"
 				/>
 				<field name="id_facebook" type="text"
-					description="ID do Facebook API"
+					default="50"
+					description="ID do Facebook"
 					label="ID do Facebook"
 				/>
 
-				
+                <field name="facebook_version" type="number"
+					default="5"
+					description="Versão do facebook"
+					label="Versão do facebook"
+				/>
 			</fieldset>
 
 		</fields>

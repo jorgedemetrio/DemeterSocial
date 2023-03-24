@@ -12,11 +12,11 @@ class plgContentDemeter_content_plugin extends JPlugin
 	 * @since  3.1
 	 */
 	protected $autoloadLanguage = true;
-	function onContentAfterTitle($context, &$article, &$params, $limitstart)
+	function onContentAfterTitle($context, &$article, &$params, $limitstart=0)
 	{
 
-	    if($context!='com_content.article'  || !isset($article)){
-			return '';
+		if($context!='com_content.article'){
+			return;
 		}
 		
 		
@@ -25,7 +25,9 @@ class plgContentDemeter_content_plugin extends JPlugin
 		$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
 		$baseURL = $protocol.$_SERVER['SERVER_NAME'];
 		$urlLocal = $baseURL.$_SERVER['REQUEST_URI'];
-
+		$token_facebook = $this->params['token_facebook'];
+		$facebook_version = $this->params['facebook_version'];
+		
 
 		
 		$document = JFactory::getDocument();
@@ -33,45 +35,11 @@ class plgContentDemeter_content_plugin extends JPlugin
 		$script ='<div id="fb-root"></div>';
 
 
-		
-		//<div id="fb-root"></div>
-		$document->addScriptDeclaration("  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '".$id_facebook."',
-      xfbml      : true,
-      version    : 'v2.11'
-    });
-    FB.AppEvents.logPageView();
-  };
+	    $document->addCustomTag('<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v'.$facebook_version.'&appId='.$id_facebook.'&autoLogAppEvents=1" nonce="'.$token_facebook.'"></script>');
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = 'https://connect.facebook.net/pt_BR/sdk.js';
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));");
-		
-		$document->addCustomTag('<link rel="me"
-				href="https://twitter.com/twitterdev"
-				>');
 
 		
-		$textoTwitter = urlencode($article->title) . ' em ' . $urlLocal;
-		
-		$document->addCustomTag('<script src="https://apis.google.com/js/platform.js" async defer>
-		{lang: "pt-BR"}
-		</script>');
-
-		return $script.'<div class="fb-like" 
-    data-href="'.$urlLocal.'" 
-    data-layout="standard" 
-    data-action="like" 
-    data-show-faces="true">
-  </div><a class="twitter-share-button" target="_new"
-  href="https://twitter.com/intent/tweet?text='.$textoTwitter.'"
-  data-size="large">
-	Tweet</a><g:plusone></g:plusone><div class="g-plus" data-action="share"></div>';
+		return $script.'<div class="fb-like" data-href="'.$urlLocal.'" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div>';
 	}
 	
 	function onContentAfterDisplay($context, &$article, &$params, $limitstart=0)
@@ -81,7 +49,8 @@ class plgContentDemeter_content_plugin extends JPlugin
 		}
 		$tamanho = $this->params['tamanho'];
 
-		
+		$id_facebook = $this->params['id_facebook'];
+		$token_facebook = $this->params['token_facebook'];
 		$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
 		$baseURL = $protocol.$_SERVER['SERVER_NAME'];
 		$urlLocal = $baseURL.$_SERVER['REQUEST_URI'];
@@ -90,6 +59,6 @@ class plgContentDemeter_content_plugin extends JPlugin
 		
 		
 		
-		return '<div class="fb-comments" data-href="'. $urlLocal . '" data-width="'.$tamanho .'" style="margin: 0 auto;">';
+		return '<div class="fb-comments" data-href="'.$urlLocal.'" data-width="'.$tamanho .'" data-numposts="5"></div>';
 	}
 }
